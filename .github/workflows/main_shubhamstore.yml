@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy PHP app to Azure Web App - shubhamstore
+name: Build and deploy Node.js app to Azure Web App - shubhamstore
 
 on:
   push:
@@ -16,20 +16,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
         with:
-          php-version: '8.3'
+          node-version: '20.x'
 
-      - name: Check if composer.json exists
-        id: check_files
-        uses: andstor/file-existence-action@v1
-        with:
-          files: 'composer.json'
-
-      - name: Run composer install if composer.json exists
-        if: steps.check_files.outputs.files_exists == 'true'
-        run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm run build --if-present
+          npm run test --if-present
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -37,7 +33,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: php-app
+          name: node-app
           path: release.zip
 
   deploy:
@@ -53,7 +49,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: php-app
+          name: node-app
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
@@ -61,13 +57,13 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_663F0D78459E454E84BBA9EDCE0D9D59 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_03965C9A03EF41BFB12D3BA9E392A938 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_097366E3A5E14A59AAD52B225F6DE649 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E5A3BBC6F5624B7B823DEC62C010F37B }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2FB111E5618F473A88ADC690445FAC83 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1849AD369AE7455BB3D1D75F5F544ED7 }}
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'shubhamstore'
           slot-name: 'Production'
