@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Add Product</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+  </header>
+
+  <main>
+    <h2>Add New Product</h2>
+    <form id="addProductForm">
+      <input type="text" id="productName" placeholder="Product Name" required>
+      <input type="number" id="productPrice" placeholder="Price per kg" required>
+      <input type="file" id="productImage" accept="image/*" required>
+      <button type="submit">Add Product</button>
+    </form>
+
+    <!-- Success message -->
+    <div id="productMessage" style="display: none;">Product added successfully!</div>
+  </main>
+
+  <!-- Include the JavaScript file here -->
+  <script src="js/admin.js"></script>
+</body>
+</html>

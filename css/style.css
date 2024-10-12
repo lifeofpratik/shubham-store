@@ -1,0 +1,75 @@
+/* General styling for body and main sections */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Light background for contrast */
+}
+
+header {
+  background-color: #4CAF50; /* Header background color */
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+}
+
+main {
+  max-width: 800px; /* Max width for content */
+  margin: 20px auto; /* Center the content */
+  padding: 20px;
+  background-color: white; /* White background for content */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Slight shadow for depth */
+}
+
+h2, h3 {
+  color: #333; /* Darker headings */
+}
+
+section {
+  margin-bottom: 20px; /* Spacing between sections */
+}
+
+.admin-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.admin-link:hover {
+  background-color: #45a049; /* Darker green when hovered */
+}
+
+/* Styling for product list */
+.product-list {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove padding */
+}
+
+.product-item {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 15px; /* Space between products */
+  border: 1px solid #ddd; /* Border around product items */
+  padding: 10px; /* Padding inside product items */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background for product items */
+}
+
+.product-image {
+  max-width: 100px; /* Set a max width for images */
+  margin-right: 15px; /* Space between image and text */
+}
+
+.product-details {
+  flex-grow: 1; /* Allow details to take available space */
+}
+
+.product-price {
+  font-weight: bold; /* Bold price */
+}
