@@ -1,7 +1,7 @@
 const productList = document.getElementById('productList');
 
 async function displayProducts() {
-    const response = await fetch('http://localhost:3000/api/products');
+    const response = await fetch('https://shubhamstore.azurewebsites.net/api/products');
     const products = await response.json();
     renderProducts(products);
 }

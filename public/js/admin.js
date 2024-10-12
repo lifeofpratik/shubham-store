@@ -14,7 +14,7 @@ productForm.addEventListener('submit', function (event) {
     };
 
     // Send the new product to the Node.js server
-    fetch('http://localhost:3000/api/products', { // Ensure this matches the server endpoint
+    fetch('https://shubhamstore.azurewebsites.net/api/products', { // Ensure this matches the server endpoint
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
