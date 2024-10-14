@@ -1,8 +1,10 @@
 const productList = document.getElementById('productList');
+let allProducts = [];
 
 async function displayProducts() {
     const response = await fetch('https://shubhamstore.azurewebsites.net/api/products');
     const products = await response.json();
+    allProducts = products; // Store products in global variable
     renderProducts(products);
 }
 
@@ -25,6 +27,11 @@ function renderProducts(products) {
         li.appendChild(details);
         productList.appendChild(li);
     });
+}
+function searchProducts() {
+    const query = document.getElementById('searchBar').value.toLowerCase();
+    const filteredProducts = allProducts.filter(product => product.name.toLowerCase().includes(query));
+    renderProducts(filteredProducts); // Re-render products based on search
 }
 
 // Initial call to display products

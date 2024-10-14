@@ -86,7 +86,25 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #4cae4f; /* Darker green on hover */
 }
+/* Search bar styling */
+.search-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
+#searchBar {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+
+#searchBar:focus {
+  border-color: #5cba47; /* Green color on focus */
+  box-shadow: 0 0 5px rgba(92, 186, 71, 0.5); /* Subtle shadow on focus */
+}
 /* Footer styles */
 footer {
   text-align: center;
